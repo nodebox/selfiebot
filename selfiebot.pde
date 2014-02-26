@@ -9,10 +9,12 @@
  */
 
 import processing.video.*;
+import controlP5.*;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
 
 Capture video;
+ControlP5 cp5;
 int seg;
 CannyEdgeDetector detector;
 PImage inputImage, edgesImage;
@@ -40,12 +42,22 @@ float motorFeedFast = 1000.0;
 
 int divider = 1;
 PImage test;
+int complexity = 2;
 
 void setup() {
   frameRate(30);
   size(sketchWidth, sketchHeight);
   video = new Capture(this, videoWidth, videoHeight);
   video.start();
+  cp5 = new ControlP5(this);
+  
+  cp5.addSlider("complexity")
+     .setPosition(20,height-20)
+     .setRange(1,4)
+     .setColorBackground(color(255))
+     .setColorCaptionLabel(color(0))
+     ;
+  
   seg = 5;
   background(255); // white background
   noFill(); // shapes will have no fill
@@ -59,7 +71,7 @@ void setup() {
 
 void draw() {
   background(240);
-  seg = 1;//control object
+  seg = complexity;//control object
 
   if (video.available()) {
     video.read();
@@ -70,12 +82,11 @@ void draw() {
   detector.process();
   edgesImage = new PImage(detector.getEdgesImage());
 
-  tint(250, 250, 50, 90);
-  image(inputImage, 0, 0, sketchWidth, sketchHeight);
-  image(edgesImage, 0, 0, sketchWidth, sketchHeight);
+  //image(inputImage, 0, 0, sketchWidth, sketchHeight); // uncomment to show the video 
+  //image(edgesImage, 0, 0, sketchWidth, sketchHeight); // uncomment to seed the edge detect image
 
   lines = findLines(edgesImage);
-
+  stroke(0);
   for (ArrayList<PVector>line: lines) {
     beginShape();
     for (PVector pt: line) {
