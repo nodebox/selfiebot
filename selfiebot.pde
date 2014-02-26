@@ -42,7 +42,7 @@ float motorFeedFast = 1000.0;
 
 int divider = 1;
 PImage test;
-int complexity = 2;
+int complexity = 1;
 
 void setup() {
   frameRate(30);
@@ -54,7 +54,7 @@ void setup() {
   cp5.addSlider("complexity")
      .setPosition(20,height-20)
      .setRange(1,4)
-     .setColorBackground(color(255))
+     .setColorBackground(color(200))
      .setColorCaptionLabel(color(0))
      ;
   
