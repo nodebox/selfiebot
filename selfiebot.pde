@@ -45,6 +45,7 @@ void setup() {
   frameRate(30);
   size(sketchWidth, sketchHeight);
   video = new Capture(this, videoWidth, videoHeight);
+  video.start();
   seg = 5;
   background(255); // white background
   noFill(); // shapes will have no fill
