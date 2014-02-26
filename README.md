@@ -7,11 +7,12 @@ Selfiebot is a drawing robot that draws quick selfie images. This is a Processin
 Usage
 =====
 1. Download [Processing](http://processing.org/download/).
-2. Open the sketch and run it.
-3. Stand in front of the webcam.
-4. Press the spacebar to export the current image to G-code.
-5. Import G-code file into Makelangelo software while drawbot is running.
-6. Calibrate the pen and start drawing.
+2. Download and install the [controlP5 library](http://www.sojamo.de/libraries/controlP5/)
+3. Open the sketch and run it.
+4. Stand in front of the webcam.
+5. Press the spacebar to export the current image to G-code.
+6. Import G-code file into Makelangelo software while drawbot is running.
+7. Calibrate the pen and start drawing.
 
 Credits
 =======
